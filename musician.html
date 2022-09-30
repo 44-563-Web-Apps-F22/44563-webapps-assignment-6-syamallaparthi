@@ -9,13 +9,13 @@
 <h2>Getting input</h2>
 
 <form>
-    <label for="form1_age">Enter the secret musician name </label>
-    <input type ="password" id="form1_age" name="form1_age" min=10 max=50 step=2 value=John Lennon> <br>
+    <label for="musician_name">Enter the secret musician name </label>
+    <input type ="password" id="musician_name" name="musician_name" min=10 max=50 step=2 value="John Lennon"> <br>
 
-    <label for="form1_nick">Guess the musician </label>
-    <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br>
+    <label for="guess_musician">Guess the musician </label>
+    <input type ="text" id="guess_musician" name="guess_musician" autofocus> <br>
 
-    <input type="button" onclick="checkGuess()" value="Get values from form">
+    <input type="button" onclick="checkGuess()" value="check the guess">
 </form>
 
 
@@ -26,18 +26,18 @@ correct = 0
 wrong = 0
 function checkGuess(){
     console.log("Getting form values")
-    age = document.getElementById("form1_age").value
-    nick = document.getElementById("form1_nick").value
+    name = document.getElementById("musician_name").value
+    musician = document.getElementById("guess_musician").value
     
     out = document.getElementById("result")
-    if(age==nick){
+    if(name == musician){
         correct = correct+1
         alert("You got it right")
-        out.innerHTML = "correct "+correct 
+        out.innerHTML = "correct count  "+correct 
     } else {
         wrong = wrong+1
         alert("Wrong Musician")
-        out.innerHTML = "wrong "+wrong
+        out.innerHTML = "wrong count "+wrong
     }
 }
 </script>
