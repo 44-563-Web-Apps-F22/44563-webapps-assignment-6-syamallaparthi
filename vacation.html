@@ -1,82 +1,81 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Welcome To Vacation Page</title>
-    </head>
- 
+ <head>
+    <title>
+        On my vacation
+    </title>
+ </head>
 <body>
-
-<h2>Jyothsna Pamarthi selects a vacation</h2> <br>
-<div class="container">
+<h2>Syam kumar Allaparthi selects a vacation</h2>
+<h2>Getting input</h2>
     <form>
-        <div class="form-group">
-            <input type="checkbox" id="byair" name="byAir" value="true">
-            <label for="air">Travel by Air</label>
-        </div>
-        <div class="form-group">
-            <input type="checkbox" id="bydomestic" name="byDomestic" value="true">
-            <label for="domestic">Domestic</label> 
-        </div>
-        <div class="form-group">
-            <input type="checkbox" id="byresort" name="byResort" value="false">
-            <label for="resort">Resort</label> 
-        </div>
-        <br>
-        <button class="btn btn-warning" type="button" onclick="selectVacation()">Select a vacation</button>
-</form>
-</div>
-<br>
-<p id="result">Means of transport will be updated here</p>
-<br><br>
-<form>
-    <div>
-        <label for="cityName">Enter a city name </label>
-        <input type="text" id="city" name="city"  value="city">
-    </div>
-    <div>
-        <label for="cityName">Enter price </label>
-        <input type="text" id="price" name="price" value="">
-    </div>
+        <input type="checkbox" id="throughair" name="vacation" value="true">
+        <label for="air">Travel by Air</label><br>
+        <input type="checkbox" id="throughdomestic" name="vacation" value="true">
+        <label for="domestic">Domestic</label><br>
+        <input type="checkbox" id="throughresort" name="vacation" value="false">
+        <label for="resort">Resort</label><br>
+        <input type="button" value="Select a vacation" onclick="selectVacation()">
+   
+    </form>
     <br>
-    <input type="button" onclick="updateVacation()" value="Update the vacation">
-</form>
-<br>
-<div id="city_results">Results for updated vacations are: </div>
-
-<script> 
-    var my_vacation = {}
-    function selectVacation (){
-        my_vacation = {}
-        result = ""
-        air = document.getElementById("byair").checked
-        domestic =  document.getElementById("bydomestic").checked
-        resort = document.getElementById("byresort").checked
-        if(air) {
-            result = "Travel By Air, "
-        }
-        if(domestic){
-            result = result + "Domestic , "
-        }
-        if(resort) {
-            result = result + "Resort"
-        }
-        my_vacation["vacation"] = result
-        document.getElementById("city_results").innerHTML = my_vacation["vacation"]
     
+    <script>
+        var my_vacation={};
+        function selectVacation(){
+            let a=document.getElementById("throughair").checked
+            let d=document.getElementById("throughdomestic").checked
+            let r=document.getElementById("throughresort").checked
+    if(a)
+    {
+        my_vacation.throughair=true;
     }
-
-    function updateVacation(){
-        vacation_city = document.getElementById("city").value
-        vacation_price = document.getElementById("price").value
-
-        my_vacation["city"] =  " city : " + vacation_city
-        my_vacation["price"] = ", price: " + vacation_price
-
-       // document.getElementById("city_price_results").innerHTML += JSON.stringify(my_vacation)
-       document.getElementById("city_price_results").innerHTML += my_vacation["city"] + my_vacation["price"]
-
+    else
+    {
+        my_vacation.throughair=false;
     }
-</script>
+    if(d)
+    {
+        my_vacation.throughdomestic=true;
+    }
+    else
+    {
+        my_vacation.throughdomestic=false;
+    }
+    if(r)
+    {
+        my_vacation.throughresort=true;
+    }
+    else
+    {
+        my_vacation.throughresort=false;
+    }
+    
 
+    document.getElementById("final").innerHTML=JSON.stringify(my_vacation)
+}
+    </script>
+    <form>
+        <label for="city">Enter a city</label>
+        <input type="text" id="city" name="name" value="city"> <br>
+        
+        <label for="price">Enter price</label>
+        <input type="text" id="price" name="price"> <br>
+    
+        <input type="button"  value="Update the vacation" onclick="updateVacation()">
+        <p id="final">A vacation is selected and also updated</p>
+    </form> 
+<script>
+    function updateVacation()
+{
+    let city=document.getElementById("city").value;
+    let price=document.getElementById("price").value;
+    my_vacation["city"]=city;
+    my_vacation["price"]=price;
+
+    document.getElementById("final").innerHTML=JSON.stringify(my_vacation)
+}
+
+   </script>
 </body>
 </html>
